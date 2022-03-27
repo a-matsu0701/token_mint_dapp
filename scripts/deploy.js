@@ -14,11 +14,16 @@ async function main() {
   const Token = await hre.ethers.getContractFactory("Token");
   const token = await Token.deploy();
 
+  const MAToken = await hre.ethers.getContractFactory("MAToken");
+  const maToken = await MAToken.deploy("Matsu A Token", "MAT");
+
   await greeter.deployed();
   await token.deployed();
+  await maToken.deployed();
 
   console.log("Greeter deployed to:", greeter.address);
   console.log("Token deployed to:", token.address);
+  console.log("MAToken deployed to:", maToken.address);
 }
 
 main()
